@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sh_product_tree" model="ir.ui.view">
+        <field name="name">sh.product.tree</field>
+        <field name="model">sh.product</field>
+        <field name="arch" type="xml"> 
+            <tree string="product Details">
+                <field name="product_name"/>
+                <field name="product_description"/>
+                <field name="product_price"/>
+               
+                
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="sh_product_form" model="ir.ui.view">
+        <field name="name">sh.product.form</field>
+        <field name="model">sh.product</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+                <sheet>
+                    <group>
+                        <field name="product_name"/>
+                        <field name="product_description"/>
+                        <field name="product_price"/>
+                       
+                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>  
+
+    <record id="sh_course_form" model="ir.ui.view">
+        <field name="name">sh.product.kanban</field>
+        <field name="model">sh.product</field>
+        <field name="arch" type="xml">
+            <div name="bottom" position="inside">
+                <div class="mt-2">
+                    <span>product</span>
+                    <field name="product_name" class="ms-2" widget="selection"/>
+                </div>
+            </div>
+        </field>
+    </record>
+
+  
+        <record id="action_view_course" model="ir.actions.act_window">
+            <field name="name">Product</field>
+            <field name="res_model">sh.product</field>
+            <field name="view_mode">kanban,tree,form</field>    
+        </record>
+
+        <menuitem
+            id="sh_product"
+            name="Product "
+            action="action_view_course"/>
+
+</odoo>

@@ -1,0 +1,38 @@
+<odoo>
+    <record id="sh_fees_wizard_view_form" model="ir.ui.view">
+        <field name="name">sh.fees.wizard.view.form</field>
+        <field name="model">sh.fees.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Fees">
+                <sheet>
+                    <group>
+                        <field name="name_id" />
+                        <field name="fees"></field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sh_fees_wizard_view_tree" model="ir.ui.view">
+        <field name="name">sh.fees.wizard.view.tree</field>
+        <field name="model">sh.fees.wizard</field>
+        <field name="arch" type="xml">
+            <tree string="Fees">
+
+                <field name="name_id" />
+                <field name="fees"></field>
+                
+            </tree>
+        </field>
+    </record>
+    
+    <record id="sh_fees_wizard_action" model="ir.actions.act_window">
+        <field name="name">Fees Wizard</field>
+        <field name="res_model">sh.fees.wizard</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="sh_fees_wizard_view_tree"/>
+        <field name="view_id" ref="sh_fees_wizard_view_form"/>
+    </record>
+</odoo>

@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+sh_report.access_sh_product,access_sh_product,sh_report.model_sh_product,base.group_user,1,1,1,1
+sh_report.access_sh_tax,access_sh_tax,sh_report.model_sh_tax,base.group_user,1,1,1,1
+sh_report.access_sh_bill,access_sh_bill,sh_report.model_sh_bill,base.group_user,1,1,1,1
+sh_report.access_sh_loop,access_sh_loop,sh_report.model_sh_loop,base.group_user,1,1,1,1
+sh_report.access_sh_loop_two,access_sh_loop_two,sh_report.model_sh_loop_two,base.group_user,1,1,1,1
+sh_report.access_sh_type,access_sh_type,sh_report.model_sh_type,base.group_user,1,1,1,1
+sh_report.access_sh_show_hide,access_sh_show_hide,sh_report.model_sh_show_hide,base.group_user,1,1,1,1
+sh_report.access_sh_type_two,access_sh_type_two,sh_report.model_sh_type_two,base.group_user,1,1,1,1

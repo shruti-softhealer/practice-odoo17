@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+sh_collage.access_sh_type,access_sh_type,sh_collage.model_sh_type,base.group_user,1,1,1,1
+sh_collage.access_sh_person,access_sh_person,sh_collage.model_sh_person,base.group_user,1,1,1,1
+sh_collage.access_sh_semdata,access_sh_semdata,sh_collage.model_sh_semdata,base.group_user,1,1,1,1
+sh_collage.access_sh_year,access_sh_year,sh_collage.model_sh_year,base.group_user,1,1,1,1
+sh_collage.access_sh_student_line,access_sh_student_line,sh_collage.model_sh_student_line,base.group_user,1,1,1,1
+sh_collage.access_sh_hobby,access_sh_hobby,sh_collage.model_sh_hobby,base.group_user,1,1,1,1
+sh_collage.access_sh_fee_status,access_sh_fee_status,sh_collage.model_sh_fee_status,base.group_user,1,1,1,1
+sh_collage.access_sh_fees_wizard,access_sh_fees_wizard,sh_collage.model_sh_fees_wizard,base.group_user,1,1,1,1

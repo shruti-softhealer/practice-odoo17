@@ -1,0 +1,15 @@
+<!-- data/stage_data.xml -->
+<odoo>
+    <record id="stage_quotation_draft" model="sh.selection">
+        <field name="name">Quotation</field>
+    </record>
+    <record id="stage_quotation_sent" model="sh.selection">
+        <field name="name">Quotation Sent</field>
+    </record>
+    <record id="stage_sales_order" model="sh.selection">
+        <field name="name">Sales Order</field>
+    </record>
+    <record id="stage_cancelled" model="sh.selection">
+        <field name="name">Cancelled</field>
+    </record>
+</odoo>

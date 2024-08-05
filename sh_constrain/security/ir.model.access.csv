@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+sh_constrain.access_sh_constrain,access_sh_constrain,sh_constrain.model_sh_constrain,base.group_user,1,1,1,1
+sh_constrain.access_sh_cron,access_sh_cron,sh_constrain.model_sh_cron,base.group_user,1,1,1,1
+sh_constrain.access_sh_search,access_sh_search,sh_constrain.model_sh_search,base.group_user,1,1,1,1

@@ -1,0 +1,50 @@
+<odoo>
+    <record id="person_view_form" model="ir.ui.view">
+        <field name="name">person.view.form</field>
+        <field name="model">sh.person</field>
+        <field name="arch" type="xml">
+            <form string="Person">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="surname"/>
+                        <field name="display_name"/>
+                        <field name="type_id"/>
+                        <field name="mobile" />
+                        <field name="email"/>
+                        <field name="city"/>
+                        <field name="state" />
+                        <field name="dob" />
+                        <field name="hobbies" widget="many2many_tags"/>
+                                                                                                                                                                                                                                                                         
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>  
+    
+    <record id="person_view_tree" model="ir.ui.view">
+        <field name="name">person.view.tree</field>
+        <field name="model">sh.person</field>
+        <field name="arch" type="xml">
+            <tree string="Person">
+                <field name="name"/>
+                <field name="surname"/>
+                <field name="display_name"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="person_action" model="ir.actions.act_window">
+        <field name="name">person</field>
+        <field name="res_model">sh.person</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <menuitem
+        id="sh_person_menu"
+        name="person"
+        action="person_action"/>
+</odoo>

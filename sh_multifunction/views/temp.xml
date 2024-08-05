@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- multi action -->
+<odoo>
+    <record model="ir.actions.server" id="sh_office_contact_queue">
+        <field name="name">Manually Import</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_product_template" />
+        <field name="binding_model_id" ref="model_product_template" />
+        <field name="state">code</field>
+        <field name="code">
+            action = records.import_office_manually()
+        </field>
+    </record>
+</odoo>
+
+<!-- 
+<record id="action_url_google" model="ir.actions.act_url">
+    <field name="name">Google</field>
+    <field name="url">https://www.flipkart.com/</field>
+    <field name="target">new</field>
+</record> -->

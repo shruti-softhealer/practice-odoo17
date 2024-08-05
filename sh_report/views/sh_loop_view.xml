@@ -1,0 +1,96 @@
+<odoo>
+    <record id="sh_loop_view_form" model="ir.ui.view">
+        <field name="name">sh.loop.view.form</field>
+        <field name="model">sh.loop</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="price" />
+                        <field name="product" />
+                        <field name="description" />
+                        <field name="qty" />
+                        <field name="image" />
+                        <field name="tax_ids" widget="many2many_tags" />
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="sh_loop_view_tree" model="ir.ui.view">
+        <field name="name">sh.loop.view.tree</field>
+        <field name="model">sh.loop</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="price" />
+                <field name="product" />
+                <field name="description" />
+                <field name="qty" />
+            </tree>
+        </field>
+    </record>
+
+
+<template id="sh_loop">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.external_layout">
+                <div class="page">
+                   
+                    <p><strong>Name:</strong> <t t-esc="doc.name"/></p>
+                    <p><strong>Price:</strong> <t t-esc="doc.price"/></p>
+                    <p><strong>Product:</strong> <t t-esc="doc.product"/></p>
+                    <p><strong>Description:</strong> <t t-esc="doc.description"/></p>
+                    <p><strong>Quantity:</strong> <t t-esc="doc.qty"/></p>
+                    <img t-if="doc.image" t-att-src="'data:image/jpeg;base64,%s' % doc.image.decode('utf-8')" style="max-width: 50px; max-height: 50px;"/>
+
+                    <t t-foreach="doc.tax_ids" t-as="record">
+                        <p><t t-out="record.tax"/></p>
+                        
+                    </t>
+                    <!-- if else conditions -->
+                    <!-- <t t-if="doc.price &gt; 50">
+                            <p>codition is true</p>                        
+                    </t>
+                   
+                    <t t-else="">
+                        <p>condition is false</p>
+                    </t> -->
+                     
+                </div>
+                
+            </t>
+        </t>
+    </t>
+</template>
+
+
+<record id="sh_loop_report" model="ir.actions.report">
+    <field name="name">Loop and condition Template</field>
+    <field name="model">sh.loop</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">sh_report.sh_loop</field>
+    <field name="report_file">sh_report.sh_loop</field>
+    <field name="print_report_name">'Price_Name_'</field>
+    <field name="binding_model_id" ref="model_sh_loop"/>
+    <field name="binding_type">report</field>
+    
+</record>
+
+
+
+
+    <record id="sh_loop_action" model="ir.actions.act_window">
+        <field name="name">Action Name</field>
+        <field name="res_model">sh.loop</field>
+        <field name="view_mode">tree,form</field>
+        
+    </record>
+    <menuitem
+        id="sh_loop_menu"
+        name="Loops"
+        action="sh_loop_action"/>
+</odoo>

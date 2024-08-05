@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+     <record id="studnet_profile1" model="sh.constrain">
+        <field name="name">Abc student 1</field>
+        <!-- <field name="product_name">sope</field> -->
+   
+     </record>
+
+
+      <record id="student_profile2" model="sh.constrain">
+        <field name="name">Abc student 2</field>
+      
+     </record>
+
+
+      <record id="student_profile3" model="sh.constrain">
+        <field name="name">Abc student 3</field>
+     
+     </record>
+
+
+      <record id="student_profile4" model="sh.constrain">
+        <field name="name">Abc student 4</field>
+    
+     </record>
+    </data>
+     
+</odoo>

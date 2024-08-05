@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sem_data_view_tree" model="ir.ui.view">
+        <field name="name">sem_data.view.tree</field>
+        <field name="model">sh.semdata</field>
+        <field name="arch" type="xml">
+            <tree string="Year">
+                <field name="year"/>
+                
+            </tree>
+        </field>
+    </record>
+
+    <record id="sem_data_view_form" model="ir.ui.view">
+        <field name="name">sem_data.view.form</field>
+        <field name="model">sh.semdata</field>
+        <field name="arch" type="xml">
+            <form string="Year">
+                <sheet>
+                    <group>
+                        <field name="year"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    
+
+    <record id="sem_data_action" model="ir.actions.act_window">
+        <field name="name">sem</field>
+        <field name="res_model">sh.semdata</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <menuitem
+        id="sh_sem_data_menu"
+        name="Sem"
+        action="sem_data_action"/>
+
+</odoo>

@@ -1,0 +1,23 @@
+<odoo>
+    <record id="sh_btn_wizard_view_form" model="ir.ui.view">
+        <field name="name">sh.btn.wizard.view.form</field>
+        <field name="model">sh.btn.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Invoice">
+                <sheet>
+                    <group>
+                        <field name="total" />
+                        <field name="type" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="sh_btn_wizard_action" model="ir.actions.act_window">
+        <field name="name">Action Name</field>
+        <field name="res_model">sh.btn.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+      
+    </record>
+</odoo>

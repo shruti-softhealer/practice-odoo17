@@ -1,0 +1,55 @@
+<odoo>
+    <record id="sh_sale_order_line_view_form" model="ir.ui.view">
+        <field name="name">sh.sale.order.line.view.form</field>
+        <field name="model">sh.sale.order.line</field>
+        <field name="arch" type="xml">
+            <form string="sale order line">
+                <header>
+                    <button  name="%(sh_Demo.sh_topic_wizard_action)d" type="action" string="Action Button" class="btn-primary"/>
+
+                </header>
+                <sheet>
+                    <group>
+                        <field name="id" />
+                        <field name="name" />
+                        <field name="product_id" />
+                        <field name="qty" />
+                        <field name="price" />
+                        <field name="tax_ids" widget="many2many_tags" />
+                        <field name="total" />
+                        <!-- <field name="concat_name"/> -->
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="sh_sale_order_line_view_tree" model="ir.ui.view">
+        <field name="name">sh.sale.order.line.view.tree</field>
+        <field name="model">sh.sale.order.line</field>
+        <field name="arch" type="xml">
+            <tree string="sale order line">
+                <field name="id" />
+                <field name="name" />
+
+                        <field name="product_id" />
+                        <field name="qty" />
+                        <field name="total" />
+                        <button  name="%(sh_Demo.sh_topic_wizard_action)d" type="action" string="Action Button" class="btn-primary"/>
+
+                        <!-- <field name="concat_name"/> -->
+
+            </tree>
+        </field>
+    </record>
+    <record id="sh_sale_order_line_action" model="ir.actions.act_window">
+        <field name="name">Sale order line</field>
+        <field name="res_model">sh.sale.order.line</field>
+        <field name="view_mode">tree,form</field>
+      
+    </record>
+    <menuitem
+        id="sh_sale_order_line_menu"
+        name="Sale order line"
+        action="sh_sale_order_line_action"/>
+</odoo>

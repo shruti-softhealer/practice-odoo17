@@ -1,0 +1,72 @@
+<odoo>
+    <record id="sh_loop_two_view_tree" model="ir.ui.view">
+        <field name="name">sh.loop.two.view.tree</field>
+        <field name="model">sh.loop.two</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="product_name" />
+                <field name="tax_id" />
+               
+
+            </tree>
+        </field>
+    </record>
+    <record id="sh_loop_two_view_form" model="ir.ui.view">
+        <field name="name">sh.loop.two.view.form</field>
+        <field name="model">sh.loop.two</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="product_name" />
+                        <field name="tax_id" />
+                        <!-- <field name="bill" /> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!-- 
+<template id="sh_loop_two">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h4>Product Name  :  <span t-esc="doc.product"/></h4> <br></br> -->
+                    <!-- <h4>bill :  <span t-esc="doc.bill"/></h4> <br></br> -->
+                <!-- </div>
+            </t>
+        </t>
+    </t>
+</template>
+
+
+<record id="sh_loop_two_report" model="ir.actions.report">
+    <field name="name">loop final Template</field>
+    <field name="model">sh.product</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">sh_report.sh_loop_two</field>
+    <field name="report_file">sh_report.sh_loop_two</field>
+    <field name="print_report_name">'Product_Name_'</field>
+    <field name="binding_model_id" ref="model_sh_loop_two"/>
+    <field name="binding_type">report</field>
+    
+</record>
+ -->
+
+
+    <record id="sh_loop_two_action" model="ir.actions.act_window">
+        <field name="name">Action Name</field>
+        <field name="res_model">sh.loop.two</field>
+        <field name="view_mode">tree,form</field>
+        
+    </record>
+
+    <menuitem
+        id="sh_loop_two_menu"
+        name="final"
+        action="sh_loop_two_action"/>
+</odoo>

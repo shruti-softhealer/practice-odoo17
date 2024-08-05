@@ -1,0 +1,40 @@
+<odoo>
+    <record id="fees_state_view_form" model="ir.ui.view">
+        <field name="name">fees.state.view.form</field>
+        <field name="model">sh.fee.status</field>
+        <field name="arch" type="xml">
+            <form string="Fees Type">
+                <sheet>
+                    <group>
+                        <field name="fees_type" />
+                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>  
+    
+    <record id="fees_state_view_tree" model="ir.ui.view">
+        <field name="name">feesstate.view.tree</field>
+        <field name="model">sh.fee.status</field>
+        <field name="arch" type="xml">
+            <tree string="Fees Type">
+                <field name="fees_type" />
+                
+            </tree>
+        </field>
+    </record>
+
+    <record id="fees_state_action" model="ir.actions.act_window">
+        <field name="name">fees_state</field>
+        <field name="res_model">sh.fee.status</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <menuitem
+        id="sh_fees_state_menu"
+        name="fees_state"
+        action="fees_state_action"/>
+
+</odoo>

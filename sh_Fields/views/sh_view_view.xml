@@ -1,0 +1,42 @@
+<odoo>
+
+    <record id="sh_view_view_tree" model="ir.ui.view">
+        <field name="name">sh.view.view.tree</field>
+        <field name="model">sh.view</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="city" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+<record id="sh_view_view_form" model="ir.ui.view">
+    <field name="name">sh.view.view.form</field>
+    <field name="model">sh.view</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <group>
+                    <field name="name" />
+                    <field name="city" />
+                    <field name="state" />
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="sh_view_action" model="ir.actions.act_window">
+    <field name="name">view</field>
+    <field name="res_model">sh.view</field>
+    <field name="view_mode">tree,form</field>
+   
+    <menuitem
+    id="sh_view_menu"
+    name="view"
+    action="sh_view_action"
+    />
+</record>
+
+</odoo>

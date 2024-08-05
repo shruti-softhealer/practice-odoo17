@@ -1,0 +1,51 @@
+<odoo>
+    <record id="sh_sequence_change_inherit_module_name" model="ir.ui.view">
+        <field name="name">sh.sequence.change.inherit.module.name</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+          
+            <!-- <xpath expr="//div[@name='oe_title']/h1" position="replace">
+            
+                    <field name="rfq" />      
+                
+            </xpath> -->
+
+            <field name="partner_id" position="after">
+                <field name="sequence" />      
+           </field>
+
+           <xpath expr="//group[@name='invoice_info']" position="inside">
+            <field name="sequence" />
+        </xpath>
+           <!-- <field name="name" position="after">
+            <field name="sequence" />      
+             </field> -->
+
+           <!-- <xpath expr="//button[@name='button_confirm']" position="replace">
+            <button name="action_confirm" type="object" string="Confirm Order" class="btn-success"/>
+        </xpath>
+             -->
+        </field>
+    </record>
+
+    <!-- rfq sequence  -->
+    <record id="sh_sql_change" model="ir.sequence">
+        <field name="name">Sequence</field>
+        <field name="code">rfq.seq</field>
+        <field name="prefix">PQ</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- rfq sequence two -->
+    <!-- <record id="sh_sql_change_two" model="ir.sequence">
+        <field name="name">Sequence</field>
+        <field name="code">rfq.seq.two</field>
+        <field name="prefix">P</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record> -->
+</odoo>

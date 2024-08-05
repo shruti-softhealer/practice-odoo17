@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="student_line_view_tree" model="ir.ui.view">
+        <field name="name">student_line.view.tree</field>
+        <field name="model">sh.student.line</field>
+        <field name="arch" type="xml">
+            <tree string="Student Line">
+                
+                
+                <field name="name_id"/>
+                <field name="fees_state"/>
+                <button  name="%(sh_collage.sh_fees_wizard_action)d" type="action" string="Pay Fees" class="btn-primary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="student_line_view_form" model="ir.ui.view">
+        <field name="name">student_line.view.form</field>
+        <field name="model">sh.student.line</field>
+        <field name="arch" type="xml">
+            <form string="Student Line">
+                <header>   
+                    <button  name="%(sh_collage.sh_fees_wizard_action)d" type="action" string="Pay Fees" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name_id"/>
+                        <field name="fees_state"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="student_line_action" model="ir.actions.act_window">
+        <field name="name">Student Line</field>
+        <field name="res_model">sh.student.line</field>
+        <field name="view_mode">tree,form</field>
+    
+    </record>
+
+    <menuitem
+        id="student_line_menu"
+        name="Student Line"
+        action="student_line_action"
+       parent="sh_person_menu"
+        />
+</odoo>

@@ -1,0 +1,49 @@
+<odoo>
+    <record id="sh_year_view_form" model="ir.ui.view">
+        <field name="name">sh.year.view.form</field>
+        <field name="model">sh.year</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="year"/>
+                        <field name="current_year"/>
+                        <field name="fees"/>
+                        <field name="sh_student_line"/>
+                        <button name="create_product" type="object" string="create" class="btn-primary"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sh_year_view_tree" model="ir.ui.view">
+        <field name="name">sh.year.view.tree</field>
+        <field name="model">sh.year</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+                <field name="year"/>
+                <field name="current_year"/>
+                <field name="fees"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_year_action" model="ir.actions.act_window">
+        <field name="name">Year</field>
+        <field name="res_model">sh.year</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="sh_year_menu"
+        name="Year"
+        action="sh_year_action"
+        parent="sh_person_menu"
+        />
+
+</odoo>

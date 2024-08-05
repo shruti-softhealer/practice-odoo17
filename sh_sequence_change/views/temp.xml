@@ -1,0 +1,37 @@
+<odoo>
+    <record id="view_form" model="ir.ui.view">
+        <field name="name">view.form</field>
+        <field name="model">sh.</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="" string=""/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_tree" model="ir.ui.view">
+        <field name="name">view.tree</field>
+        <field name="model">sh.</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="" string=""/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="_action" model="ir.actions.act_window">
+        <field name="name"></field>
+        <field name="res_model">sh.</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id=""
+        name=""
+        action="_action"
+    />
+</odoo>

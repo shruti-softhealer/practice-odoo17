@@ -1,0 +1,127 @@
+<odoo>
+    <template id="report_bill">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <table style="border: 1px solid white; width: 100%; margin-bottom: 20px;">
+                            <tr>
+                                <td style="width: 60%; vertical-align: top;">
+                                    <h5><b>Customer Name and Address :</b></h5>
+                                    <p><span t-esc="doc.partner_id.name"/></p>
+                                    <p><span t-esc="doc.partner_id.street"/></p>
+                                    <p><span t-esc="doc.partner_id.city"/></p>
+                                    <p><span t-esc="doc.partner_id.country_id.name"/></p>
+                                </td>
+                                <td style="width: 40%; vertical-align: top;">
+                                    <h6><b>Date Ordered :</b> <span t-esc="doc.date_order"/></h6>
+                                    <h6><b>Sales Person :</b> <span t-esc="doc.user_id.name"/></h6>
+                                    <h6><b>Payment Term :</b> <span t-esc="doc.payment_term_id.name"/></h6>
+                                </td>
+                            </tr>
+                        </table>
+                    
+                        <table style="border: 1px solid white; width: 100%; border-radius: 20px; border-collapse: separate; border-spacing: 0;">
+                            <thead style="background-color: #003B73; color: white;">
+                                <tr>
+                                    <td class="text-center" style="padding: 10px;"> <h5>Sr.</h5> </td> 
+                                    <td class="text-center" style="padding: 10px;"> <h5>Product</h5> </td>
+                                    <td class="text-center" style="padding: 10px;"> <h5>Description</h5> </td>
+                                    <td class="text-center" style="padding: 10px;"> <h5>Image</h5> </td>
+                                    <td class="text-center" style="padding: 10px;"> <h5>Qty</h5> </td>
+                                    <td class="text-center" style="padding: 10px;"> <h5>Unit Price</h5> </td>
+                                    <td class="text-center" style="padding: 10px;"> <h5>Taxes</h5> </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="sequence" t-value="0"/>
+                                <t t-foreach="doc.order_line" t-as="line">
+                                    <t t-set="sequence" t-value="sequence + 1"/>
+                                    <tr>
+                                        <td style="padding: 10px; text-align: center;"><t t-esc="sequence"/></td>
+                                        <td style="padding: 10px; text-align: center;"><t t-esc="line.name"/></td>
+                                        <td style="padding: 10px; text-align: center;"><t t-esc="line.product_id.description"/></td>
+                                        <td style="padding: 10px; text-align: center;">
+                                            <img t-if="line.product_id.image_1920" t-att-src="'data:image/jpeg;base64,%s' % line.product_id.image_1920.decode('utf-8')" style="max-width: 50px; max-height: 50px;"/>
+                                        </td>
+                                        <td style="padding: 10px; text-align: center;"><t t-esc="line.product_uom_qty"/></td>
+                                        <td style="padding: 10px; text-align: center;"><p>$<t t-esc="line.price_unit"/></p></td>
+                                        <td style="padding: 10px; text-align: center;">
+                                            <t t-foreach="line.tax_id" t-as="tax">
+                                                <span t-esc="tax.amount"/>%
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7" style="padding: 2px; text-align: center; font-weight: bold; background-color: #f0f0f0;">
+                                           
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            
+                        </table>
+
+                        <table style="border: 1px solid white; width: 100%; border-radius: 20px; border-collapse: separate; border-spacing: 0; margin-top:30px;">
+                            <tr>
+                                <td style="width: 30%; vertical-align: top;">
+                                    <p style="color:#5a5a5a; font-weight: bold;">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                    </p>
+                                </td>
+                                <td style="width: 50%; vertical-align: top;">
+                                    <table style="width: 100%; border: 1px solid white;">
+                                        <tr>
+                                            <td colspan="4" style="border: none;"></td>
+                                            <td colspan="2" style="padding: 10px; text-align: right;"><h5><strong>Subtotal :</strong></h5></td>
+                                            <td style="padding: 10px; text-align: right;"><p>$<t t-esc="doc.amount_untaxed"/></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" style="border: none;"></td>
+                                             <t t-foreach="doc.order_line.tax_id" t-as="tax">
+                                                 <td colspan="2" style="padding: 10px; text-align: right;"><h5><strong>Taxes :</strong></h5></td>
+                                                 <td style="padding: 10px; text-align: right;"><p>$<t t-esc="tax"/></p></td>
+                                                
+                                            </t>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" style="border: none;"></td>
+                                            <td colspan="2" style="padding: 10px; text-align: right;"><h5><strong>Total :</strong></h5></td>
+                                            <td style="padding: 10px; text-align: right;"><p>$<t t-esc="doc.amount_total"/></p></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                           
+                            
+                        </table>
+                        <table style="border: 1px solid white; width: 100%; border-radius: 20px; border-collapse: separate; border-spacing: 0;">
+                            <tr style="background-color: #003B73; color: white;">
+                                <td style="width: 40%; vertical-align: top; padding: 10px;">
+                                    <h5><strong>Payment Term:</strong> <t t-esc="doc.payment_term_id.name"/></h5>
+                                </td>
+                                <td style="width: 60%;  text-align: right; padding: 5px;">
+                                    <h5><strong>Final Total:</strong>$<t t-esc="doc.amount_total"/></h5>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="sh_bill_final_report" model="ir.actions.report">
+        <field name="name">Bill Template</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">sh_inherite.report_bill</field>
+        <field name="report_file">sh_inherite.report_bill</field>
+        <field name="print_report_name">'Customer_Name_'</field>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

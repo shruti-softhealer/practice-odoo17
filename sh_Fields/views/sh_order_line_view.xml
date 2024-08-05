@@ -1,0 +1,50 @@
+<odoo>
+    <record id="sh_order_line_inherit_view" model="ir.ui.view">
+        <field name="name">sh.order.line.inherit.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+             
+
+            <!-- <xpath expr="//notebook//page//field[@name='order_line']//tree//field[@name='product_id']" position="after">
+                    <field name="my_product"  />      
+            </xpath> -->
+
+            <xpath expr="//field[@name='product_template_id']" position="after">
+                <!-- <button  name="Button" type="object" string="wizard" class="btn-success"/> -->
+                <button  name="%(sh_Fields.sh_wizard_action)d" type="action" string="wizard" class="btn-primary"/>
+                   
+            </xpath>
+          
+            <xpath expr="//sheet" position="inside">
+                <div class="oe_custom_icon">
+                    <img src="/sh_Fields/static/src/img/like.svg" alt="Custom Icon"/>
+                </div>
+            </xpath>
+            <!-- <xpath expr="//field[@name='signed_by']" position="after">
+                <field name="my_product"  />      
+            </xpath>
+            -->
+
+        </field>
+    </record>
+</odoo>
+
+<!-- <odoo>
+    <record id="sh_order_line_inherit_view" model="ir.ui.view">
+        <field name="name">sh.order.line.inherit.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            
+
+         
+
+            <xpath expr="//field[@name='product_id']" position="after">
+                <button  name="demo" type="object" string="wizard" class="btn-primary"/>
+            </xpath>
+           
+
+        </field>
+    </record>
+</odoo> -->

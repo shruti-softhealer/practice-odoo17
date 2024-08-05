@@ -1,0 +1,56 @@
+<odoo>
+    <record id="sh_constrain_view_form" model="ir.ui.view">
+        <field name="name">view.form</field>
+        <field name="model">sh.constrain</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button  name="action_send_email" type="object" string="Mail" class="btn-success"/>
+
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="date" />
+                        <field name="amount" />
+                        <field name="product_name" />
+                        <field name="description" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="message_ids" />
+                </div>
+            </form>
+
+        </field>
+    </record>
+    
+
+    <record id="sh_constrain_view_tree" model="ir.ui.view">
+        <field name="name">view.tree</field>
+        <field name="model">sh.constrain</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                        <field name="name" />
+                        <field name="date" />
+                        <field name="amount" />
+                        
+            </tree>
+        </field>
+    </record>
+
+   
+
+    <record id="sh_constrain_action" model="ir.actions.act_window">
+        <field name="name">constrain</field>
+        <field name="res_model">sh.constrain</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="sh_constrain_menu"
+        name="constrain"
+        action="sh_constrain_action"
+    />
+</odoo>

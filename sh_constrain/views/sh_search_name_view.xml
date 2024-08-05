@@ -1,0 +1,27 @@
+<odoo>
+    <record id="sh_search_view_view_form" model="ir.ui.view">
+        <field name="name">sh.search.view.form</field>
+        <field name="model">sh.search</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="partner_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="search_action" model="ir.actions.act_window">
+        <field name="name">Action Name</field>
+        <field name="res_model">sh.search</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="search_menu"
+        name="Search"
+        parent = "sh_constrain_menu"
+        action = "search_action"/>
+</odoo>

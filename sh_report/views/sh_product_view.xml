@@ -1,0 +1,106 @@
+<odoo>
+    <record id="sh_product_view_form" model="ir.ui.view">
+        <field name="name">sh.product.view.form</field>
+        <field name="model">sh.product</field>
+        <field name="arch" type="xml">
+            <form string="Product Form">
+                <sheet>
+                    <group>
+                    <field name="product" />
+                    <field name="description" />
+                    <field name="qty" />
+                    <field name="price" />
+                    <field name="tax_ids" />
+                    <field name="type_ids" />
+
+                    <field name="image" />
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sh_product_view_tree" model="ir.ui.view">
+        <field name="name">sh.product.view.tree</field>
+        <field name="model">sh.product</field>
+        <field name="arch" type="xml">
+            <tree string="Product Tree">
+                      
+                    <field name="product" />
+                    <field name="description" />
+                    <field name="qty" />
+                    <field name="price" />
+                    <field name="type_ids" />
+
+                    <field name="tax_ids" />
+
+
+            </tree>
+        </field>
+    </record>
+    <record id="sh_product_action" model="ir.actions.act_window">
+        <field name="name">product</field>
+        <field name="res_model">sh.product</field>
+        <field name="view_mode">tree,form</field>
+        
+    </record>
+
+
+    <template id="sh_product_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <h4>
+                        Product Name       :     
+                        <span t-esc="doc.product"/>
+                    </h4><br></br>
+                    <h4>
+                        Product Description       :     
+                        <span t-esc="doc.description"/>
+                    </h4><br></br>
+                    <h4>
+                        Product Qty       :     
+                        <span t-esc="doc.qty"/>
+                    </h4><br></br>
+                    <h4>
+                        Product Price       :     
+                        <span t-esc="doc.price"/>
+                    </h4><br></br>
+                    <h4>
+                        Product Tax       :     
+                        <span t-esc="doc.tax_ids"/>
+                    </h4><br></br>
+                    <h4>
+                        Image      :     
+                        <img t-if="doc.image" t-att-src="'data:image/jpeg;base64,%s' % doc.image.decode('utf-8')" style="max-width: 50px; max-height: 50px;"/>
+                    </h4><br></br>
+                    <h4>
+                      
+                        Product Type    :     
+                        <span t-esc="doc.type_ids.product_type"/>
+                    </h4><br></br>
+                   
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="sh_report" model="ir.actions.report">
+        <field name="name">Product Template</field>
+        <field name="model">sh.product</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sh_report.sh_product_report</field>
+        <field name="report_file">sh_report.sh_product_report</field>
+        <field name="print_report_name">'Product_Name_'</field>
+        <field name="binding_model_id" ref="model_sh_product"/>
+        <field name="binding_type">report</field>
+        
+    </record>
+
+    <menuitem
+        id="sh_product_menu"
+        name="Product"
+        action="sh_product_action"
+       />
+</odoo>

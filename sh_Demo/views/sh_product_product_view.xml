@@ -1,0 +1,38 @@
+<odoo>
+    <record id="sh_product_product_view_tree" model="ir.ui.view">
+        <field name="name">sh.product.product.view.tree</field>
+        <field name="model">sh.product.product</field>
+        <field name="arch" type="xml">
+            <tree string="Product">
+                <field name="name" />
+                
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_product_product_view_form" model="ir.ui.view">
+        <field name="name">sh.product.product.view.form</field>
+        <field name="model">sh.product.product</field>
+        <field name="arch" type="xml">
+            <form string="Product">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="sh_product_product_action" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="res_model">sh.product.product</field>
+        <field name="view_mode">tree,form</field>
+        
+    </record>
+    <menuitem
+        id="sh_product_product_menu"
+        name="Product"
+        action="sh_product_product_action"
+        parent="sh_sale_order_menu"
+         />
+</odoo>

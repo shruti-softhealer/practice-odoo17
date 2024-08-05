@@ -1,0 +1,62 @@
+<odoo>
+    <record id="sh_show_hide_view_form" model="ir.ui.view">
+        <field name="name">sh.show.hide.view.form</field>
+        <field name="model">sh.show.hide</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="type_two" />
+
+                        <field name="student_name"
+                            invisible="type_two in [False,'teacher']"
+                        />
+                        <field name="div"
+                            invisible="type_two in [False,'teacher']" />
+                         <field name="enroll"
+                            invisible="type_two in [False,'teacher']" />
+
+                        <field name="teacher_name"
+                            invisible="type_two in [False,'student']" />
+                        <field name="subject"
+                            invisible="type_two in [False,'student']" />
+                        <field name="teacher_class" 
+                            invisible="type_two in [False,'student']"/>
+
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="sh_show_hide_view_tree" model="ir.ui.view">
+        <field name="name">sh.show.hide.view.tree</field>
+        <field name="model">sh.show.hide</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="type_two" />
+
+                <field name="student_name" />
+                <field name="div" />
+                <field name="enroll" />
+
+                <field name="teacher_name" />
+                <field name="subject" />
+                <field name="teacher_class" />
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_show_hide_action" model="ir.actions.act_window">
+        <field name="name">Show Hide</field>
+        <field name="res_model">sh.show.hide</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+    <menuitem
+        id="sh_show_hide_menu"
+        name="Show Hide"
+        action="sh_show_hide_action"
+    />
+</odoo>

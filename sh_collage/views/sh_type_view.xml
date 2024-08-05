@@ -1,0 +1,44 @@
+<odoo>
+    <record id="sh_type_tree" model="ir.ui.view">
+        <field name="name">sh.type.tree</field>
+        <field name="model">sh.type</field>
+        <field name="arch" type="xml">
+            <tree string="type Details">
+
+                <field name="type" />
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_type_form" model="ir.ui.view">
+        <field name="name">sh.type.form</field>
+        <field name="model">sh.type</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+
+                <sheet>
+                    <group>
+                        <field name="type" />
+
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_view_type" model="ir.actions.act_window">
+        <field name="name">type</field>
+        <field name="res_model">sh.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="sh_type"
+        name="type"
+        action="action_view_type"
+        />
+</odoo> 

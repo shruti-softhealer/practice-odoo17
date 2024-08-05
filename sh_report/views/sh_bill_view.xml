@@ -1,0 +1,178 @@
+<odoo>
+    <record id="sh_bill_view_form" model="ir.ui.view">
+        <field name="name">sh.bill.view.form</field>
+        <field name="model">sh.bill</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="address" />
+                        <field name="date" />
+                        <field name="reference" />
+                        <field name="sales_person" />
+                        <field name="payment_term" />
+                        <field name="bill_ids" />
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="sh_bill_view_tree" model="ir.ui.view">
+        <field name="name">sh.bill.view.tree</field>
+        <field name="model">sh.bill</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="address" />
+            </tree>
+        </field>
+    </record>
+
+
+
+
+<template id="sh_bill_report">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <table style="border: 1px solid white; width: 100%; border-collapse: separate; border-spacing: 0;">
+                        <tr>
+                            <td style="border: none; vertical-align: top; padding-right: 20px;">
+                                <h5><b>Customer Name and Address</b></h5>
+                                <p><span t-esc="doc.name"/></p>
+                                <p><span t-esc="doc.address"/></p>
+                            </td>
+                            <td style="border: none; vertical-align: top;">
+                                <h6><b>Date:</b><span t-esc="doc.date"/></h6>
+                                <h6><b>Your Reference :</b><span t-esc="doc.reference"/></h6>
+                                <h6><b>Sales Person :</b><span t-esc="doc.sales_person"/></h6>
+                                <h6><b>Payment Term :</b><span t-esc="doc.payment_term"/></h6>
+                               
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    
+                    
+                    <table style="border: 1px solid white; width: 100%; border-collapse: separate; border-spacing: 0;">
+                        <tr  style="background-color:#003B73;color:white">
+                            <td class="text-center" style="padding:10px"> <h5>Sr.</h5> </td> 
+                            <td class="text-center" style="padding:10px"> <h5>Product</h5> </td>
+                            <td class="text-center" style="padding:10px"> <h5>Image.</h5> </td>
+                            <td class="text-center" style="padding:10px"> <h5>Description</h5> </td>
+                            <td class="text-center" style="padding:10px"> <h5>Qty</h5> </td>
+                            <td class="text-center" style="padding:10px"> <h5>Unite Price</h5> </td>
+                            <td class="text-center" style="padding:10px"> <h5>Taxes</h5> </td>
+                        </tr>
+                       
+                        <t t-set="sequence" t-value="0"/>
+                            <t t-foreach="doc.bill_ids" t-as="record">
+                            <t t-set="sequence" t-value="sequence + 1"/>
+
+                            <tr>
+                                <td class="text-center" style="padding:10px"><p><t t-out="sequence"/></p></td>
+                                <td class="text-center" style="padding:10px"><t t-out="record.product"/></td>
+                            <td>
+                                <img t-if="record.image" t-att-src="'data:image/jpeg;base64,%s' % record.image.decode('utf-8')" style="max-width: 50px; max-height: 50px;"/>
+                            </td>
+                                <td class="text-center" style="padding:10px"><t t-out="record.description"/></td>
+                                <td class="text-center" style="padding:10px"><t t-out="record.qty"/></td>
+                                <td class="text-center" style="padding:10px"><t t-out="record.price"/></td>
+                                <td class="text-center" style="padding:10px"><t t-out="record.tax_ids.tax"/></td>
+                            </tr>
+                        </t>
+                      
+                    </table>
+
+                    <table style="border: 1px solid white; width: 100%; border-radius: 20px; border-collapse: separate; border-spacing: 0; margin-top:30px;">
+                        <tr>
+                            <!-- <td style="width: 30%; vertical-align: top;">
+                                <p style="color:#5a5a5a; font-weight: bold;">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                </p>
+                            </td> -->
+                            <td style="width: 50%; vertical-align: top;">
+                                <table style="width: 100%; border: 1px solid white;">
+                                    <t t-foreach="doc.bill_ids.type_ids" t-as="i">
+                                        <tr>
+                                            <td colspan="4" style="border: none;"></td>
+                                            <td colspan="2" style="padding: 10px; text-align: right;"><h5><strong>Product Type :</strong></h5></td>
+                                            <td style="padding: 10px; text-align: right;"><t t-esc="i.product_type"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" style="border: none;"></td>
+                                          
+                                            <td colspan="2" style="padding: 10px; text-align: right;"><h5><strong>DOM :</strong></h5></td>
+                                            <td style="padding: 10px; text-align: right;"><t t-esc="i.dom"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" style="border: none;"></td>
+                                            <td colspan="2" style="padding: 10px; text-align: right;"><h5><strong>DOE :</strong></h5></td>
+                                            <td style="padding: 10px; text-align: right;"><t t-esc="i.doe"/></td>
+                                        </tr>
+                                    </t>
+                                </table>
+                            </td>
+                        </tr>
+                       
+                        
+                    </table>
+                    <table style="border: 1px solid white; width: 100%; border-radius: 20px; border-collapse: separate; border-spacing: 0;">
+                        <tr style="background-color: #003B73; color: white;">
+                            <td style="width: 40%; vertical-align: top; padding: 10px;">
+                                <!-- <h5><strong>Payment Term:</strong> <t t-esc="doc.payment_term_id.name"/></h5> -->
+                            </td>
+                            <td style="width: 60%;  text-align: right; padding: 5px;">
+                                <!-- <h5><strong>Final Total:</strong>$<t t-esc="doc.amount_total"/></h5> -->
+                            </td>
+                            
+                        </tr>
+                        
+                    </table>
+                    
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+
+
+
+
+
+
+<record id="sh_bill_final_report" model="ir.actions.report">
+    <field name="name">bill Template</field>
+    <field name="model">sh.bill</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">sh_report.sh_bill_report</field>
+    <field name="report_file">sh_report.sh_bill_report</field>
+    <field name="print_report_name">'Customer_Name_'</field>
+    <field name="binding_model_id" ref="model_sh_bill"/>
+    <field name="binding_type">report</field>
+    
+</record>
+ 
+
+
+
+
+
+    <record id="sh_bill_action" model="ir.actions.act_window">
+        <field name="name">Bill</field>
+        <field name="res_model">sh.bill</field>
+        <field name="view_mode">tree,form</field>
+      
+    </record>
+
+
+
+    <menuitem
+        id="sh_bill_menu"
+        name="Bill"
+        action="sh_bill_action"/>
+</odoo>

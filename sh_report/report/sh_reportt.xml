@@ -1,0 +1,12 @@
+<odoo>
+ <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <!-- <xpath expr="//div[@name='informations_date']" position="inside">
+            <h1>hello, world</h1>
+            <t t-esc="doc.info" />      
+
+        </xpath> -->
+        <xpath expr="//th[@name='th_quantity']" position="replace">
+            <th>Qty</th>
+        </xpath> 
+        </template>
+</odoo>

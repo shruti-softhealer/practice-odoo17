@@ -1,0 +1,10 @@
+<odoo>
+<record id="sh_sale_order_option_inherit_module_name" model="ir.ui.view">
+    <field name="name">sh.sale.order.option.inherit.module.name</field>
+    <field name="model"></field>
+    <field name="inherit_id" ref=""/>
+    <field name="arch" type="xml">
+        
+    </field>
+</record>
+</odoo>

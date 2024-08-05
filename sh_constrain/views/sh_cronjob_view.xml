@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sh_cronjob_view_tree" model="ir.ui.view">
+        <field name="name">sh.cronjob.view.tree</field>
+        <field name="model">sh.cron</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="name_id" />
+                <field name="name_id_two" />
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_cronjob_view_form" model="ir.ui.view">
+        <field name="name">sh.cronjob.view.form</field>
+        <field name="model">sh.cron</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="name_id" />
+                        <field name="name_id_two" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+ <!-- sequence -->
+ <record id="seq_sh_cornjob" model="ir.sequence">
+    <field name="name">Sequence</field>
+    <field name="code">sh.cron.1</field>
+    <field name="prefix">S</field>
+    <field name="padding">5</field>
+    <field name="number_next">1</field>
+    <field name="number_increment">1</field>
+</record>
+ <!-- sequence -->
+<record id="seq_two_sh_cornjob" model="ir.sequence">
+    <field name="name">Sequence</field>
+    <field name="code">sh.cron.2</field>
+    <field name="prefix">p</field>
+    <field name="padding">5</field>
+    <field name="number_next">1</field>
+    <field name="number_increment">1</field>
+</record>
+
+<!-- cron -->
+<record id="sh_cron_cron" model="ir.cron">
+    <field name="name">Cron Name</field>
+    <field name="model_id" ref="model_sh_cron"/>
+    <field name="interval_number">1</field>
+    <field name="interval_type">minutes</field>
+    <field name="numbercall">6</field>
+    <field name="state">code</field>
+    <field name="code">model.cron_function()</field>
+</record>
+
+<record id="sh_cronjob_action" model="ir.actions.act_window">
+    <field name="name">Action Name</field>
+    <field name="res_model">sh.cron</field>
+    <field name="view_mode">tree,form</field>
+  
+</record>
+
+<menuitem
+    id="sh_cronjob_menu"
+    name="Cronjob"
+    action="sh_cronjob_action"/>
+</odoo>

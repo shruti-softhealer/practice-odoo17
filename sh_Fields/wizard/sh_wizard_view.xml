@@ -1,0 +1,27 @@
+<odoo>
+    <record id="sh_wizard_view_form" model="ir.ui.view">
+        <field name="name">sh_wizard.view.form</field>
+        <field name="model">sh.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Replace product wizard">
+                
+                <sheet>
+                    <group>
+                        <field name="my_product_wizard"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button  name="Replace_value_with_wizard" type="object" string="REPLACE" class="btn-success"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="sh_wizard_action" model="ir.actions.act_window">
+        <field name="name">Wizard</field>
+        <field name="res_model">sh.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+       
+    </record>
+</odoo>

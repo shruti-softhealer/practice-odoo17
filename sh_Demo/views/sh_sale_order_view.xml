@@ -1,0 +1,108 @@
+<!-- <odoo>
+
+    <record id="sh_sale_order_view_form" model="ir.ui.view">
+        <field name="name">sh.sale.order.view.form</field>
+        <field name="model">sh.sale.order</field>
+        <field name="arch" type="xml">
+            <form string="Sale Order">
+                <sheet>
+                    <header>
+                            <button  name="add_tag" type="object" string="Add" class="btn-primary"/>
+                    </header>
+                    <group>
+                        <field name="id"/>
+                        <field name="name" />
+                        <field name="add" />
+                        <field name="date" />
+                        <field name="partner_id" />
+                        <field name="order_line_ids" />
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sh_sale_order_view_tree" model="ir.ui.view">
+        <field name="name">sh.sale.order.view.tree</field>
+        <field name="model">sh.sale.order</field>
+        <field name="arch" type="xml">
+            <tree string="Sale Order">
+                        <field name="id"/>
+                        <field name="add" />
+                        <field name="name" />
+                        <field name="date" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_sale_order_action" model="ir.actions.act_window">
+        <field name="name">Sale Order</field>
+        <field name="res_model">sh.sale.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="sh_sale_order_menu"
+        name="Sale Order"
+        action="sh_sale_order_action"
+        />
+</odoo> -->
+<odoo>
+
+    <record id="sh_sale_order_view_form" model="ir.ui.view">
+        <field name="name">sh.sale.order.view.form</field>
+        <field name="model">sh.sale.order</field>
+        <field name="arch" type="xml">
+            <form string="Sale Order">
+                <sheet>
+                    <header>
+                        <button name="add_tag" type="object" string="Add" class="btn-primary"/>
+                        <button name="update_tag" type="object" string="update" class="btn-primary"/>
+                        <button name="delete_tag" type="object" string="delete" class="btn-primary"/>
+                        <button name="clear_tag" type="object" string="clear" class="btn-primary"/>
+                        <!-- <button name="add_tag" type="object" string="Add" class="btn-primary"/> -->
+                       
+                    </header>
+                    <group>
+                        <field name="name"/>
+                        <field name="add" widget="many2many_tags"/>
+                        <field name="date"/>
+                        <field name="partner_id"/>
+                        <field name="order_line_ids"/>
+                        <!-- <field name="final_total"/> -->
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sh_sale_order_view_tree" model="ir.ui.view">
+        <field name="name">sh.sale.order.view.tree</field>
+        <field name="model">sh.sale.order</field>
+        <field name="arch" type="xml">
+            <tree string="Sale Order">
+                <field name="name"/>
+                <field name="add" widget="many2many_tags"/>
+
+                <field name="date"/>
+                <field name="partner_id"/>
+                <field name="order_line_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sh_sale_order_action" model="ir.actions.act_window">
+        <field name="name">Sale Order</field>
+        <field name="res_model">sh.sale.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="sh_sale_order_menu"
+        name="Sale Order"
+        action="sh_sale_order_action"
+    />
+
+</odoo>
